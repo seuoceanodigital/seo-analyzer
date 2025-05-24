@@ -20,7 +20,7 @@ def analisar_seo():
 
         title = soup.title.string if soup.title else "Sem título"
         description = soup.find("meta", attrs={"name": "description"})
-        description_content = description["content"] if description else "Sem descrição"
+        description_content = description.get("content", "Sem descrição") if description else "Sem descrição"
 
         insights = gerar_insights_ia(title, description_content)
 
