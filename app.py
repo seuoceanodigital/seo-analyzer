@@ -19,8 +19,8 @@ def analisar_seo():
         soup = BeautifulSoup(response.text, 'html.parser')
 
         title = soup.title.string if soup.title else "Sem título"
-        description = soup.find("meta", attrs={"name": "description"})
-        description_content = description.get("content", "Sem descrição") if description else "Sem descrição"
+        description_tag = soup.find("meta", attrs={"name": "description"})
+        description_content = description_tag.get("content", "Sem descrição") if description_tag else "Sem descrição"
 
         insights = gerar_insights_ia(title, description_content)
 
